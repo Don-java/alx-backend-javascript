@@ -1,46 +1,38 @@
 export default class HolbertonCourse {
-    //constructor
-    constructor(name, length, students){
-        this.name = name;
-        this.length = length;
-        this.students = students;
-    }
+  constructor(name, length, students) {
+    if (typeof name !== 'string') throw new TypeError('name must be a string');
+    if (!Number.isInteger(length)) throw new TypeError('length must be a number');
+    if (!Array.isArray(students)) throw new TypeError('students type must be an Array');
 
-    //Getter for name
-    get name() {
-        return this._name;
-    }
-    //Set name
-    set name(value) {
-        if (typeof value !== 'string') {
-            throw new TypeError('Name must be a string')
-        }
-        this._name = value;
-    }
+    this._name = name;
+    this._length = length;
+    this._students = students;
+  }
 
-    //Getter for length
-    get length() {
-        return this._length;
-    }
-    //Set length
-    set length(value) {
-        if (typeof value !== "number") {
-            throw new TypeError("Length must be a number");
-        }
-        this._length = value;
-    }
+  get name() {
+    return this._name;
+  }
 
-    //Get for students
-    get students() {
-        return this._students;
-    }
-    //Set students
-    set students(value) {
-        value.forEach((element) => {
-            if (typeof element !== 'string') {
-                throw new TypeError('Students must be an array of strings');
-            }
-        });
-        this._students = value;
-    }
-}   
+  set name(val) {
+    if (typeof val !== 'string') throw new TypeError('name must be a string');
+    this._name = val;
+  }
+
+  get length() {
+    return this._length;
+  }
+
+  set length(val) {
+    if (!Number.isInteger(val)) throw new TypeError('length must be a number');
+    this._length = val;
+  }
+
+  get students() {
+    return this._students;
+  }
+
+  set students(val) {
+    if (!Array.isArray(val)) throw new TypeError('students type must be an Array');
+    this._students = val;
+  }
+}
